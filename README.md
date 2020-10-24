@@ -55,5 +55,5 @@ Open the application on your browser 127.0.0.1:8000.
 If you have any questions or contributions, please email me at [omaribinbakarivic@gmail.com]
 
 ## License
-* License: MIT
+* Licensed under the [MIT License](LICENSE)
 * Copyright (c) 2020 Omar Hussein.
