@@ -1,0 +1,49 @@
+{%extends 'awwards/base.html'%}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron"></div>
+        </div>
+    </div>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+        {% for object in object_list %}
+            <div class="card">
+                <div class="mb-2">
+                    <img src="{{ object.poster.profile.image.url }}" class="rounded-circle article-img" alt="">
+                    <div class="article-metadata">
+                        <a class="mr-2" href="{% url 'user-projects' object.poster.username %}">{{object.poster }}</a>
+                        <small class="text-muted">{{object.timestamp|date:"F d, Y" }}</small>
+                    </div>
+                </div>
+                <img src="{{object.img.url }}" class="card-img-top">
+                <div class="card-body">
+                    <a class="nav-item nav-link" href="{% url 'project-detail' object.pk %}">{{object.title}}</a>
+                    <p class="card-text" href="#" >{{object.description}}</p>
+                    <a class="nav-item nav-link" href="{% url 'project-detail' object.pk %}">Detail</a>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <a class="mr-2" href="#"><i class="fas fa-comment-alt"></i></a> 
+                    <a class="mr-2" href="#"><i class="fas fa-copy"></i></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="col-md-2"></div>
+        
+    <div class="col-md-4">
+        <div id= "small-profile" class="mb-2">
+            <img src="{{ user.profile.image.url }}" class="rounded-circle article-img" alt="">
+            <div class="article-metadata">
+                <a class="mr-2" href="{% url 'profile' %}">{{ user.username }}</a><br>
+                <small class="text-muted">{{ user.email }}</small>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,41 @@
+{%extends 'awwards/base.html'%}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        {% if projects %}
+            <h5>Found {{ projects|length }} of searched term {{message}}</h5>
+        {% else %}
+            <h5> Found 0 photos for the search term {{message}}</h5>
+        {% endif %}
+      </div>
+      <div class="col-md-8">
+        {% if projects %}
+            {% for project in projects %}
+                <div class="card">
+                    <div class="mb-2">
+                        <img src="{{ project.poster.profile.image.url }}" class="rounded-circle article-img" alt="">
+                        <div class="article-metadata">
+                            <a class="mr-2" href="#">{{ project.poster }}</a>
+                            <small class="text-muted">{{ project.timestamp|date:"F d, Y" }}</small>
+                        </div>
+                    </div>
+                    <img src="{{ project.img.url }}" class="card-img-top">
+                    <div class="card-body">
+                        <a class="nav-item nav-link" href="{% url 'project-detail' project.pk %}">{{project.title}}</a>
+                        <p class="card-text" href="#" >{{project.description}}</p>
+                        <a class="nav-item nav-link" href="{% url 'project-detail' project.pk %}">Details</a>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <a class="mr-2" href="#"><i class="fas fa-comment-alt"></i></a> 
+                        <a class="mr-2" href="#"><i class="fas fa-heart"></i><small>100</small></a> 
+                        <a class="mr-2" href="#"><i class="fas fa-heart-broken"></i><small>100</small></a> 
+                        <a class="mr-2" href="#"><i class="fas fa-copy"></i></a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+      </div>
+  </div>
+</div>
+{% endblock %}

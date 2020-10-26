@@ -1,0 +1,48 @@
+{%extends 'awwards/base.html'%}
+{% load static %}
+{% load comments %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+            <div class="card">
+                <div class="mb-2">
+                    <img src="{{ object.poster.profile.image.url }}" class="rounded-circle article-img" alt="">
+                    <div class="article-metadata">
+                        <a class="mr-2" href="#">{{object.poster}}</a>
+                        <small class="text-muted">{{object.timestamp|date:"F d, Y"}}</small>
+                        {% if object.poster == user %}
+                            <div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <img src="{{ object.img.url }}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{object.title}}</h5>
+                    <a href="{% url 'awwards-rating' pk=project.pk %}">RATE</a>
+                    <p class="card-text">{{object.description}}</p>
+                    <small class="text-muted">{{ object.usability }}</small>
+                    <small class="text-muted">{{ object.content }}</small>
+                    <small class="text-muted">{{ object.design }}</small>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+        <div class="container">
+            <div class="row">
+                <div id="scrollable" class="article-metadata"></div>
+            </div>
+        </div>
+
+    </div>
+    <div>
+    </div>
+</div>
+</div>
+{% endblock content %}

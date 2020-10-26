@@ -1,0 +1,113 @@
+{% extends 'awwards/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="profile-image">
+                <img src="{{profile.image.url}}" width="300px">
+            </div>
+            <div class="username">
+                <h1 class="profile-user-name">{{user}}</h1>
+                <h3 class="profile-user-name">{{profile.bio}}</h3>
+            </div>
+            <button class="btn btn-secondary profile-edit-btn" data-toggle="modal" data-target="#exampleModal">Add a Project</button>
+
+            <a class="profile-settings-btn" aria-label="profile settings" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-cog" aria-hidden="true"></i></a>
+            
+        </div>
+        <div class="col-md-3">
+            <h4>Posted: {{projects|length}} projects.</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            {% if projects %}
+            {% for project in projects %}
+            <div class="landing-page">
+                <img src="{{project.img.url}}" width="300px">
+            </div>
+            <h4>
+                Ratings: {{project.rating}}
+            </h4>
+            <h5>
+                Reviews: {{project.reviews|length}}
+            </h5>
+
+            <!-- modal -->
+            <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true" style="margin-top: 200px">
+                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalScrollableTitle">{{user}}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="{{project.img.url}}" class="image-fluid" width = '100%' data-toggle="modal" data-target="#exampleModalScrollable">
+                        </div>
+                        <div class="modal-footer">
+                            <h4>{{project.description}}</h4>
+                            <h5 class="gallery-item-ratings"><span class="visually-hidden">Ratings:</span><i class="fas fa-star" aria-hidden="true"></i> {{project.rating}}</h5>
+                            <h5 class="gallery-item-reviews"><span class="visually-hidden">Reviews:</span><i class="fas fa-comment" aria-hidden="true"></i> {{project.reviews|length}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+                <h2>
+                    No projects uploaded yet
+                </h2>
+            {% endif %}
+        </div>
+        <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 150px">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content text-center">
+                        <div class="modal-header bg-nav" style='border-radius: 0%'>
+                            <h1 class="modal-title text-white text-center" id="exampleModalLabel">Add a Project</h1>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-group" action="{%url 'profile'%}" method="post" enctype="multipart/form-data">
+                                {%csrf_token%}
+                                {{ form|crispy }}
+                                <button class="btn btns bg-maroon" type="submit" name="button">Save changes</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btns bg-maroon" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" style="font-size: small;" id="exampleModalCenterTitle">Settings</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body text-center" style="display:flex; flex-direction:column; padding: 5%;">    
+                                            <a href="/logout" style="font-size: large;" class="btn btns btn-info">Logout</a>
+                                </div>
+                                <div class="modal-footer">
+                                </div>
+                            </div>
+                        </div>
+                </div>
+    
+    </div>
+</div>
+
+{% endblock content %}

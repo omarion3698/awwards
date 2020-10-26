@@ -1,0 +1,31 @@
+{% extends 'awwards/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <img src="{{ project.poster.profile.image.url }}" class="rounded-circle article-img" alt="">
+            <h3>
+                {{project.poster}}
+            </h3>
+        </div>
+        <div class="col-md-5">
+            <img src="{{project.img.url}}" width="300px">
+            <i class="fas fa-comment" data-toggle="modal" data-target="#exampleModalScrollable"></i>
+            <a href='{% url "rate" project.id %}'> <i class="fas fa-star"></i> </a>
+        </div>
+        <div>
+            <p>posted {{project.timestamp|timesince}} ago</p>
+        </div>
+    </div>
+</div>
+
+<!-- form -->
+<form class="form-group" action="/rate/{{project.id}}/" name="{{project.id}}"  method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+    {{ form|crispy }}
+   <button class="btn bg-success"  type="submit" name="button">Post Ratings</button>
+</form>
+
+{% endblock content %}

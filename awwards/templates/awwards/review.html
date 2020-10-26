@@ -1,0 +1,82 @@
+{% extends 'awwards/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-2"></div>
+    <div class="col-md-9">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-5">
+                    <img src="{{project.img.url}}" width="300px">
+                    <i class="fas fa-comment" data-toggle="modal" data-target="#exampleModalScrollable"></i>
+                    <a href='{% url "rate" project.id %}'> <i class="fas fa-star"></i> Rate </a>
+                    <p>posted {{project.timestamp|timesince}} ago</p>
+                </div>
+                <div class="col-md-4">
+                    {% if ratings %}
+                    {% for rating in ratings %}
+                    <h3>
+                        Poster: {{ rating.poster }}
+                    </h3>
+                    <h3>
+                        Usability: {{ rating.usability }}
+                    </h3>
+                    <h3>
+                        Content: {{ rating.content }}
+                    </h3>
+                    <h3>
+                        Design: {{ rating.design }}
+                    </h3>
+                    <h3>
+                        Average: {{ rating.average }}
+                    </h3>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    {% if reviews %}
+                    {% for review in reviews %}
+                    <h3>
+                        Reviewer: {{ review.poster }}
+                    </h3>
+                    <h3>
+                        <!-- you may have an error here check baadaye -->
+                        Comment: {{ review.review }}
+                    </h3>
+                    <h3>
+                        Since: {{ review.upload_date|timesince }}
+                    </h3>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true" style="margin-top: 200px">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content text-center">
+        <div class="modal-header bg-nav" style='border-radius: 0%'>
+            <h1 class="modal-title text-white text-center" id="exampleModalScrollableTitle">{{user}}</h1>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form class="form-group" action="/review/{{project.id}}/" name="{{project.id}}"  method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+            {{ form|crispy }}
+            <button class="btn btn-success text-white"  type="submit" name="button">Post Review</button>
+            </form>
+        </div>
+        </div>
+    </div>
+    </div>
+
+
+{% endblock content %}
