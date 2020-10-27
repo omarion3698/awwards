@@ -154,10 +154,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# configuring the location for media
 MEDIA_URL = '/media/'
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = 'awwards-home'
 LOGIN_URL = 'login'
