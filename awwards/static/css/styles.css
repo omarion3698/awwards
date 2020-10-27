@@ -48,7 +48,7 @@ button:hover, a:hover {
   border-bottom: 1px solid #e3e3e3;
 }
 .article-metadata a:hover {
-  color: #333;
+  color: rgb(0, 217, 255);
   text-decoration: none;
 }
 .article-svg {
@@ -61,11 +61,11 @@ small {
 }
 body {
   background: #fafafa;
-  color: #333333;
+  color: #0099ff;
   margin-top: 5rem;
 }
 h1, h2, h3, h4, h5, h6 {
-  color: #000000;
+  color: #0099ff;
 }
 ul {
   margin: 0;
@@ -75,7 +75,7 @@ ul {
 }
 #gram {
   font-family: sans-serif;
-  color: #000;
+  color: #0099ff;
   font-size: 30px;
 }
 .site-header {
@@ -109,7 +109,7 @@ a {
   font-family: sans-serif;
 }
 #search {
-  border: 1px solid #02241956;
+  border: 1px solid #0099ff;
   border-radius: 100px;
 }
 #scrollable {
