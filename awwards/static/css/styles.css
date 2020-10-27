@@ -74,7 +74,7 @@ ul {
   background-color:#D4D4D4;
 }
 #gram {
-  font-family: 'Cookie', cursive;
+  font-family: sans-serif;
   color: #000;
   font-size: 30px;
 }
@@ -106,7 +106,7 @@ a {
   font-size: 2.5rem;
 }
 .nav-item {
-  font-family: 'Special Elite', cursive;
+  font-family: sans-serif;
 }
 #search {
   border: 1px solid #02241956;
