@@ -27,7 +27,7 @@
     <header class="site-header">
         <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
             <div class="container">
-                <a class="navbar-brand mr-4" id="gram" href="{% url 'awwards-home' %}"><i class="fas fa-bars"></i> | AWWARDS</a>
+                <a class="navbar-brand mr-4" id="gram" href="{% url 'awwards-home' %}"><i class="fas fa-bars"></i>  AWWARDS</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -50,8 +50,8 @@
                     <div class="dropdown">
                     <img src="{{ user.profile.image.url }}" class="rounded-circle article-img btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{% url 'profile' %}"><i class="fas fa-user"></i> | profile</a>
-                        <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-lock-open"></i> | Logout</a>
+                        <a class="dropdown-item" href="{% url 'profile' %}"><i class="fas fa-user"></i> (profile) </a>
+                        <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-lock-open"></i> (Logout) </a>
                     </div>
                     </div>
                     <div class="article-metadata">
@@ -59,12 +59,12 @@
                         <small class="text-muted">{{ user.email }}</small>
                     </div>
                     {% else %}
-                        <a class="nav-item nav-link ml-5" href="{% url 'login' %}"><i class="fas fa-user-lock"></i> | login</a>
-                        <a class="nav-item nav-link ml-5" href="{% url 'register' %}"><i class="fas fa-user-plus"></i> | Register</a>
+                        <a class="nav-item nav-link ml-5" href="{% url 'login' %}"><i class="fas fa-user-lock"></i> (login) </a>
+                        <a class="nav-item nav-link ml-5" href="{% url 'register' %}"><i class="fas fa-user-plus"></i> (Register) </a>
                     {% endif %}
       
                     <div class="pr-submit">
-                        <a class="nav-item nav-link ml-5" href="{% url 'project-create' %}"><i class="fas fa-plus"></i> | New Post</a>
+                        <a class="nav-item nav-link ml-5" href="{% url 'project-create' %}"><i class="fas fa-plus"></i> (New Post) </a>
                     </div>
                 </div>
             </div>
