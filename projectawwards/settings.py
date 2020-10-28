@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'crispy_forms',
     'django_cleanup',
+    # 'pyuploadcare.dj',
 ]
 
 MIDDLEWARE = [
@@ -159,5 +160,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = 'awwards-home'
 LOGIN_URL = 'login'
+
+UPLOADCARE = {
+    'pub_key': '83938ccd502212fefab7',
+    'secret': '78d52136d456a02eacda',
+}
 
 django_heroku.settings(locals())
