@@ -14,6 +14,9 @@ This is a django web application for rating projects.It mirrors awwards.The appl
 * A user be able to post a project to be rated and/or reviewed.
 * A user is able to view his/her profile page.
 
+## Known Bugs
+Yes, When a user posts a project a default image overlaps the image of the project.
+
 ## SetUp instructions
 To come up with the same project...
 
