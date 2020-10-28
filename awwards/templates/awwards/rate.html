@@ -23,9 +23,8 @@
 
 <!-- form -->
 <form class="form-group" action="/rate/{{project.id}}/" name="{{project.id}}"  method="post" enctype="multipart/form-data">
-    {%csrf_token%}
+    {% csrf_token %}
     {{ form|crispy }}
    <button class="btn bg-success"  type="submit" name="button">Post Ratings</button>
 </form>
-
 {% endblock content %}
