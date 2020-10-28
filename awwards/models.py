@@ -6,7 +6,8 @@ from django.urls import reverse
 from django.core.validators import MaxValueValidator, MinValueValidator 
 
 class Project(models.Model):
-    img = models.ImageField(default='default.png', upload_to='images')
+    # img = models.ImageField(default='default.png', upload_to='images')
+    img = models.ImageField(upload_to='images/',null=True) 
     title = models.CharField(default='My Project', max_length = 30)
     description = models.TextField()
     timestamp = models.DateTimeField(default=timezone.now)
