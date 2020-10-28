@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="profile-image">
-                <img src="{{profile.image.url}}" width="300px">
+                <img src="{{profile.image.cdn_url}}" width="300px">
             </div>
             <div class="username">
                 <h1 class="profile-user-name">{{user}}</h1>
@@ -75,7 +75,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form class="form-group" action="{%url 'profile'%}" method="post" enctype="multipart/form-data">
+                            <form class="form-group" action="{% url 'profile' %}" method="post" enctype="multipart/form-data">
                                 {%csrf_token%}
                                 {{ form|crispy }}
                                 <button class="btn btns bg-maroon" type="submit" name="button">Save changes</button>

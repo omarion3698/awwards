@@ -1,4 +1,4 @@
-{%extends 'awwards/base.html'%}
+{% extends 'awwards/base.html' %}
 {% load static %}
 
 {% block content %}
@@ -14,7 +14,7 @@
         {% for object in object_list %}
             <div class="card">
                 <div class="mb-2">
-                    <img src="{{ object.poster.profile.image.url }}" class="rounded-circle article-img" alt="">
+                    <img src="{{ object.poster.profile.image.cdn_url }}" class="rounded-circle article-img" alt="">
                     <div class="article-metadata">
                         <a class="mr-2" href="{% url 'user-projects' object.poster.username %}">{{object.poster }}</a>
                         <small class="text-muted">{{object.timestamp|date:"F d, Y" }}</small>
@@ -36,7 +36,7 @@
         
     <div class="col-md-4">
         <div id= "small-profile" class="mb-2">
-            <img src="{{ user.profile.image.url }}" class="rounded-circle article-img" alt="">
+            <img src="{{ user.profile.image.cdn_url }}" class="rounded-circle article-img" alt="">
             <div class="article-metadata">
                 <a class="mr-2" href="{% url 'profile' %}">{{ user.username }}</a><br>
                 <small class="text-muted">{{ user.email }}</small>

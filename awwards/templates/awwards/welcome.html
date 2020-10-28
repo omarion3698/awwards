@@ -57,7 +57,7 @@
                     <div id="left" class="box-right">{{ entry.timestamp|date:"F d, Y" }}</div>
                 </div>
                 <div class="card-body">
-                    <img src="{{ entry.poster.profile.image.url }}" class="rounded-circle article-img" alt="">
+                    <img src="{{ entry.poster.profile.image.cdn_url }}" class="rounded-circle article-img" alt="">
                     <div class="article-metadata">
                         <a class="mr-2" href="{% url 'profile' %}">{{ entry.poster.username }}</a><br>
                         <small class="text-muted">{{ entry.poster.email }}</small><br>
@@ -88,7 +88,7 @@
                     <div id="left" class="box-right">{{ entry.timestamp|date:"F d, Y" }}</div>
                 </div>
                 <div class="card-body">
-                    <img src="{{ entry.poster.profile.image.url }}" class="rounded-circle article-img" alt="">
+                    <img src="{{ entry.poster.profile.image.cdn_url }}" class="rounded-circle article-img" alt="">
                     <div class="article-metadata">
                         <a class="mr-2" href="{% url 'profile' %}">{{ entry.poster.username }}</a><br>
                         <small class="text-muted">{{ entry.poster.email }}</small><br>

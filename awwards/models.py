@@ -9,8 +9,8 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Project(models.Model):
     # img = models.ImageField(default='default.png', upload_to='images')
     # img = models.ImageField(upload_to='images', default = null)
-    img = models.ImageField(upload_to='images', manual_crop='1280x720', blank = True)
-    
+    # image = models.ImageField(upload_to='images', manual_crop='1280x720', blank = True)
+    img = ImageField(blank=True, manual_crop="")
     title = models.CharField(default='My Project', max_length = 60)
     description = models.TextField(max_length = 60)
     timestamp = models.DateTimeField(default=timezone.now)
@@ -25,9 +25,6 @@ class Project(models.Model):
     def __str__(self):
         return self.title
 
-    def delete_project(self):
-        self.delete()
-
     @classmethod
     def search_by_title(cls,search_term):
         projectis = cls.objects.filter(title__icontains=search_term)
@@ -39,10 +36,12 @@ class Project(models.Model):
     def get_project_by_id(project_id):
         project = Project.objects.get(pk = project_id)
         return project
-
+        
     def save_project(self):
         self.save()
 
+    def delete_project(self):
+        self.delete()
 
 class Rating(models.Model):
     project = models.CharField(max_length = 30, default = '')

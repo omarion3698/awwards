@@ -47,7 +47,7 @@
                     <!-- Navbar Right Side -->
                     {% if user.is_authenticated %}
                     <div class="dropdown">
-                    <img src="{{ user.profile.image.url }}" class="rounded-circle article-img btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="{{ user.profile.image.cdn_url }}" class="rounded-circle article-img btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="{% url 'profile' %}"><i class="fas fa-user"></i> (profile) </a>
                         <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-lock-open"></i> (Logout) </a>
