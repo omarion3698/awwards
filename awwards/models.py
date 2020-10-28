@@ -7,7 +7,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Project(models.Model):
     # img = models.ImageField(default='default.png', upload_to='images')
-    img = models.ImageField(upload_to='images',null=True)
+    img = models.ImageField(upload_to='images')
     title = models.CharField(default='My Project', max_length = 30)
     description = models.TextField()
     timestamp = models.DateTimeField(default=timezone.now)
@@ -43,8 +43,8 @@ class Rating(models.Model):
     design = models.IntegerField(choices=((1, 1),(2, 2),(3, 3),(4, 4),(5, 5),(6, 6), (7, 7),(8, 8), (9, 9), (10, 10)), blank=True)
 
     def __str__(self):
+        average = models.IntegerField(blank = True, default=0)
         return self.poster
-    average = models.IntegerField(blank = True, default=0)
 
 class Review(models.Model):
     project = models.CharField(max_length = 30, default = '')
