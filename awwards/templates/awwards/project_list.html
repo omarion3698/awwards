@@ -24,7 +24,7 @@
                 <div class="card-body">
                     <a class="nav-item nav-link" href="{% url 'project-detail' object.pk %}">{{object.title}}</a>
                     <p class="card-text" href="#" >{{object.description}}</p>
-                    <a class="nav-item nav-link" href="{% url 'project-detail' object.pk %}">Detail</a>
+                    <button><a class="nav-item nav-link" href="{% url 'project-detail' object.pk %}">Details</a></button>
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     <a class="mr-2" href="#"><i class="fas fa-comment-alt"></i></a> 
                     <a class="mr-2" href="#"><i class="fas fa-copy"></i></a>

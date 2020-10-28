@@ -23,8 +23,7 @@
                 <img src="{{ object.img.url }}" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">{{object.title}}</h5>
-                    <a href="{% url 'awwards-rating' pk=project.pk %}">RATE</a>
-                    <p class="card-text">{{object.description}}</p>
+                    <button><a href="{% url 'awwards-rating' pk=project.pk %}">RATE</a></button>
                     <small class="text-muted">{{ object.usability }}</small>
                     <small class="text-muted">{{ object.content }}</small>
                     <small class="text-muted">{{ object.design }}</small>
