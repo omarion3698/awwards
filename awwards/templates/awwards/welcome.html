@@ -53,11 +53,11 @@
                     <li id="enpos" class="list-group-item">{{ entry.poster }}</li>
                 </ul>
                 <div class="card-body">
-                    <div id="right" class="box-left">From Spain</div>
+                    <div id="right" class="box-left">From Kenya</div>
                     <div id="left" class="box-right">{{ entry.timestamp|date:"F d, Y" }}</div>
                 </div>
                 <div class="card-body">
-                    <img src="{{ entry.poster.profile.image.cdn_url }}" class="rounded-circle article-img" alt="">
+                    <img src="{{ entry.poster.profile.image.url }}" class="rounded-circle article-img" alt="">
                     <div class="article-metadata">
                         <a class="mr-2" href="{% url 'profile' %}">{{ entry.poster.username }}</a><br>
                         <small class="text-muted">{{ entry.poster.email }}</small><br>
@@ -84,11 +84,11 @@
                     <li id="enpos" class="list-group-item">{{ entry.poster }}</li>
                 </ul>
                 <div class="card-body">
-                    <div id="right" class="box-left">From Spain</div>
+                    <div id="right" class="box-left">From Kenya</div>
                     <div id="left" class="box-right">{{ entry.timestamp|date:"F d, Y" }}</div>
                 </div>
                 <div class="card-body">
-                    <img src="{{ entry.poster.profile.image.cdn_url }}" class="rounded-circle article-img" alt="">
+                    <img src="{{ entry.poster.profile.image.url }}" class="rounded-circle article-img" alt="">
                     <div class="article-metadata">
                         <a class="mr-2" href="{% url 'profile' %}">{{ entry.poster.username }}</a><br>
                         <small class="text-muted">{{ entry.poster.email }}</small><br>

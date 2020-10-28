@@ -9,12 +9,12 @@ class ProjectForm(forms.ModelForm):
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
-        exclude=['poster','project', 'upload_date']
+        exclude = ['poster','project', 'upload_date']
 
 class RateForm(forms.ModelForm):
     class Meta:
-        model=Rating
-        exclude=['poster', 'project', 'average']
+        model = Rating
+        exclude = ['poster', 'project', 'average']
 
 class RatingForm(forms.ModelForm):
     class Meta:

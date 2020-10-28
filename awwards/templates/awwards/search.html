@@ -15,7 +15,7 @@
             {% for project in projects %}
                 <div class="card">
                     <div class="mb-2">
-                        <img src="{{ project.poster.profile.image.cdn_url }}" class="rounded-circle article-img" alt="">
+                        <img src="{{ project.poster.profile.image.url }}" class="rounded-circle article-img" alt="">
                         <div class="article-metadata">
                             <a class="mr-2" href="#">{{ project.poster }}</a>
                             <small class="text-muted">{{ project.timestamp|date:"F d, Y" }}</small>

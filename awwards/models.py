@@ -3,24 +3,20 @@ import datetime
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
-from pyuploadcare.dj.models import ImageField
 from django.core.validators import MaxValueValidator, MinValueValidator 
 
 class Project(models.Model):
-    # img = models.ImageField(default='default.png', upload_to='images')
-    # img = models.ImageField(upload_to='images', default = null)
-    # image = models.ImageField(upload_to='images', manual_crop='1280x720', blank = True)
-    img = ImageField(blank=True, manual_crop="")
-    title = models.CharField(default='My Project', max_length = 60)
-    description = models.TextField(max_length = 60)
+    img = models.ImageField(default='default.png', upload_to='images')
+    title = models.CharField(default='My Project', max_length = 40)
+    description = models.TextField()
     timestamp = models.DateTimeField(default=timezone.now)
     poster = models.ForeignKey(User, on_delete=models.CASCADE)
-    reviews = models.CharField(max_length = 60, blank = True, default = 0)
+    reviews = models.CharField(max_length = 40, blank = True, default = 0)
     link = models.CharField(default='No link', max_length = 120)
-    av_usability = models.CharField(max_length = 30, default = 0)
-    av_design = models.CharField(max_length = 30, default = 0)
-    av_content = models.CharField(max_length = 30, default = 0)
-    rating = models.CharField(max_length = 30, default = 0)
+    av_usability = models.CharField(max_length = 40, default = 0)
+    av_design = models.CharField(max_length = 40, default = 0)
+    av_content = models.CharField(max_length = 40, default = 0)
+    rating = models.CharField(max_length = 40, default = 0)
 
     def __str__(self):
         return self.title
@@ -33,15 +29,10 @@ class Project(models.Model):
     def get_absolute_url(self):
         return reverse('project-detail', kwargs={'pk': self.pk})
 
+
     def get_project_by_id(project_id):
         project = Project.objects.get(pk = project_id)
         return project
-        
-    def save_project(self):
-        self.save()
-
-    def delete_project(self):
-        self.delete()
 
 class Rating(models.Model):
     project = models.CharField(max_length = 30, default = '')
@@ -51,8 +42,8 @@ class Rating(models.Model):
     design = models.IntegerField(choices=((1, 1),(2, 2),(3, 3),(4, 4),(5, 5),(6, 6), (7, 7),(8, 8), (9, 9), (10, 10)), blank=True)
 
     def __str__(self):
-        average = models.IntegerField(blank = True, default=0)
         return self.poster
+    average = models.IntegerField(blank = True, default=0)
 
 class Review(models.Model):
     project = models.CharField(max_length = 30, default = '')
@@ -62,6 +53,7 @@ class Review(models.Model):
 
     def __str__(self):
         return self.review
+
 
 class ProjectVote(models.Model):
     voter = models.CharField(default='My Project', max_length = 80)

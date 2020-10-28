@@ -10,22 +10,21 @@
             <div class="col-md-5">
 
             {% if projects %}
-
             {% for project in projects %}
             <div class="card" style="width: 20rem;">
                 <img class="img-fluid" src="{{project.img.url}}" width="100%">
                 <div class="card-body">
-                    <h5 class="card-title">{{project.title}}</h5>
-                    <p class="card-text">{{project.description}}.</p>
+                    <h5 class="card-title">{{ project.title }}</h5>
+                    <p class="card-text">{{ project.description }}.</p>
                 </div>
                 <div class="profile">
-                    <img src="{{ project.poster.profile.image.cdn_url }}" class="rounded-circle article-img" alt="">
+                    <img src="{{ project.poster.profile.image.url }}" class="rounded-circle article-img" alt="">
                     <small style="text-align:right">
                         {{project.poster.profile.user}}
                     </small>
                 </div>
                 <div class="card-body">
-                    <a href="{{project.link}}" class="btn btn-outline-info mb-4">See the Project</a>
+                    <a href="{{ project.link }}" class="btn btn-outline-info mb-4">See the Project</a>
                 </div>
                 <a href="{% url 'review' project.id %}"> <i class="fas fa-comment"></i> </a><br>
                 <small>posted {{project.timestamp|timesince}} ago</small>
@@ -35,13 +34,13 @@
                 <div class="modal-dialog modal-dialog-scrollable" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalScrollableTitle">{{user}}</h5>
+                            <h5 class="modal-title" id="exampleModalScrollableTitle">{{ user }}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <img src="{{project.img.url}}" class="image-fluid" data-toggle="modal" data-target="#exampleModalScrollable">
+                            <img src="{{ project.img.url }}" class="image-fluid" data-toggle="modal" data-target="#exampleModalScrollable">
                         </div>
                         <div class="modal-footer">
                             <h4>{{project.description}}</h4>
